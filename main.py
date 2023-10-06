@@ -21,9 +21,9 @@ async def echo(message: types.Message):
         if info:
             await bot.send_message(info.user_id, message.text)
             await message.reply('Сообщение отправлено пользователю')
+            Message.delete_by_id(info.id)
         else:
             await bot.send_message(ADMIN_ID, 'Не удалось найти пользователя/сообщение уже отвечено')
-            Message.delete_by_id(info.id)
         return
 
     if message.from_user.id != ADMIN_ID:

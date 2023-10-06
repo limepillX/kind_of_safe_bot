@@ -3,8 +3,8 @@ from aiogram.filters import Command
 
 from database import Message
 
-BOT_TOKEN = '6399057834:AAFvzvnCnctAabisH6xCUfKijSxDlNszKmc'
-ADMIN_ID = 5856926800
+BOT_TOKEN = ...
+ADMIN_ID = ...
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 

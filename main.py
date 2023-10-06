@@ -3,8 +3,8 @@ from aiogram.filters import Command
 
 from database import Message
 
-BOT_TOKEN = ...
-ADMIN_ID = ...
+BOT_TOKEN = '6399057834:AAFvzvnCnctAabisH6xCUfKijSxDlNszKmc'
+ADMIN_ID = 5856926800
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
@@ -24,8 +24,9 @@ async def echo(message: types.Message):
         else:
             await bot.send_message(ADMIN_ID, 'Не удалось найти пользователя/сообщение уже отвечено')
             Message.delete_by_id(info.id)
+        return
 
-    elif message.from_user.id != ADMIN_ID:
+    if message.from_user.id != ADMIN_ID:
         sent_message = await bot.send_message(ADMIN_ID, message.text)
         Message.create(message_id=sent_message.message_id, user_id=message.from_user.id)
         await message.reply('Сообщение отправлено администратору')
